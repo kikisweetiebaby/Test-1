@@ -1,45 +1,65 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="zh-CN">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kiki's Little Corner</title>
-  <style>
-    :root {font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color:#f7eff9; background:#17162b}
-    * {box-sizing:border-box}
-    body {margin:0; min-height:100vh; background:radial-gradient(circle at 25% 15%,#443153 0,transparent 42%),linear-gradient(145deg,#17162b,#272039); display:flex;flex-direction:column}
-    nav {display:flex;justify-content:flex-end; gap:1.6rem; padding:30px 7%;font-size:.78rem;letter-spacing:.1em}
-    nav a {color:#d5cae2;text-decoration:none}
-    nav a:hover {color:#ffcee6}
-    main {flex:1; display:flex;align-items:center;justify-content:center;text-align:center;padding:32px}
-    .hero {max-width:650px}
-    .sparkle {font-size:2.5rem}
-    h1 {font-size:clamp(2.7rem,8vw,5rem);color:#ffd6ec;letter-spacing:-.05em;margin:12px 0}
-    p {line-height:1.8;color:#e0d8e9;font-size:1.08rem}
-    button {background:#e8a7cd;color:#28203c;border:0;border-radius:99px;padding:15px 27px;font-size:1rem;font-weight:700;cursor:pointer;margin-top:25px;box-shadow:0 8px 32px #130e2266}
-    button:hover {background:#f7c2e1;transform:translateY(-2px)}
-    #message {min-height:2em;color:#ffd6ec;margin-top:23px}
-    footer{text-align:center;color:#b5aac4;padding:25px;font-size:.82rem}
-  </style>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f7f5f1"><title>小账本 · Personal Finance</title>
+<style>
+:root{--bg:#f7f5f1;--ink:#242923;--muted:#7a8177;--green:#375d47;--light:#e5eee6;--line:#e5e7e1;--card:#fff;--orange:#b1684d}*{box-sizing:border-box}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft Yahei",sans-serif;background:var(--bg);color:var(--ink)}button,input,select{font:inherit}button{cursor:pointer}.wrap{max-width:1150px;margin:auto;padding:28px 22px 65px}.top{display:flex;justify-content:space-between;gap:16px;align-items:center;margin-bottom:30px}.brand{font-size:20px;font-weight:750;letter-spacing:-.6px}.brand span{color:var(--green)}.subtitle{color:var(--muted);font-size:13px;margin-top:7px}.pill{border:1px solid #d6ded6;border-radius:50px;padding:9px 14px;background:white;color:var(--green);font-size:12px}h1{font-size:clamp(28px,4vw,42px);letter-spacing:-1.4px;margin:0 0 8px}.hero{display:flex;justify-content:space-between;align-items:end;gap:20px;margin:20px 0 26px}.sub{color:var(--muted);font-size:14px}.select{padding:12px 14px;border-radius:12px;border:1px solid var(--line);background:white}.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}.stat{background:var(--card);border:1px solid var(--line);padding:25px;border-radius:19px;min-height:155px;box-shadow:0 4px 16px #22352206}.stat.highlight{background:var(--green);color:white}.stat .label{font-size:13px;color:var(--muted)}.stat.highlight .label{color:#dbe8de}.stat .num{font-weight:740;letter-spacing:-1px;font-size:clamp(23px,3vw,36px);margin-top:18px;font-variant-numeric:tabular-nums}.hint{font-size:12px;color:var(--muted);margin-top:9px}.stat.highlight .hint{color:#cddbd1}.layout{display:grid;grid-template-columns:1.23fr 1fr;gap:18px;margin-top:20px}.panel{background:white;border-radius:20px;border:1px solid var(--line);padding:23px;min-width:0}.panelhead{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:20px}h2{font-size:18px;margin:0;letter-spacing:-.3px}.muted{color:var(--muted);font-size:12px}.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.field{display:flex;flex-direction:column;gap:7px}.field.full{grid-column:1/-1}label{font-size:12px;color:#59645a;font-weight:600}input,select{width:100%;padding:12px;border:1px solid #dfe4dc;border-radius:11px;background:white;color:var(--ink);outline-color:#7fa48b}.typegroup{display:flex;gap:8px}.typebutton{flex:1;border:1px solid var(--line);background:#f8faf7;border-radius:11px;padding:11px}.typebutton.active{background:var(--green);color:white;border-color:var(--green)}.primary{border:0;border-radius:12px;padding:13px 17px;background:var(--green);color:white;font-weight:700}.soft{border:1px solid var(--line);border-radius:11px;padding:10px 14px;background:white;color:var(--ink)}.actionline{display:flex;gap:10px;align-items:center;margin-top:18px}.empty{text-align:center;color:var(--muted);font-size:13px;padding:35px 10px}.rowcat{margin:0 0 16px}.catline{display:flex;justify-content:space-between;gap:8px;font-size:13px;margin-bottom:7px}.bar{height:9px;background:#eff2ed;border-radius:9px;overflow:hidden}.fill{height:100%;background:#84a58c;border-radius:9px}.records{margin-top:18px}.record{display:flex;align-items:center;gap:13px;border-top:1px solid #edf0e9;padding:15px 0}.bubble{width:43px;height:43px;display:grid;place-items:center;border-radius:13px;background:#eef3ec;font-size:18px;flex-shrink:0}.recmain{min-width:0;flex:1}.recname{font-size:14px;font-weight:650;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.recsub{font-size:12px;color:var(--muted);margin-top:5px}.amount{font-weight:700;font-size:15px;white-space:nowrap}.amount.expense{color:#ab644f}.amount.income{color:var(--green)}.iconbtn{background:transparent;border:0;color:#8b948a;padding:7px}.toolbar{display:flex;gap:10px;flex-wrap:wrap;align-items:center}.toolbar select{width:auto;min-width:115px}.notice{padding:12px 15px;margin-top:20px;border-radius:11px;background:#e9efe7;color:#506556;font-size:12px;line-height:1.7}.foot{font-size:12px;color:#899088;text-align:center;margin-top:25px}.mini{display:flex;justify-content:space-between;gap:8px;margin-top:10px}.editbadge{font-size:12px;color:var(--green)}.danger{color:#a3473e}.wide{grid-column:1/-1}@media(max-width:800px){.layout{grid-template-columns:1fr}.stats{gap:8px}.stat{padding:17px;min-height:130px}.stat .num{font-size:clamp(18px,4.5vw,25px)}.wrap{padding:19px 13px 45px}.panel{padding:17px}.hero{align-items:start;flex-direction:column}.top{align-items:start}.pill{max-width:148px;text-align:center}}@media(max-width:430px){.stats{grid-template-columns:1fr 1fr}.stat.highlight{grid-column:1/-1;min-height:120px}.formgrid{grid-template-columns:1fr}.field.full{grid-column:auto}.toolbar select{min-width:100px}}
+</style>
 </head>
 <body>
-  <nav><a href="#home">HOME</a><a href="#about">ABOUT</a><a href="mailto:hello@example.com" id="contact">CONTACT</a></nav>
-  <main id="home"><section class="hero" id="about">
-    <div class="sparkle" aria-hidden="true">✨</div>
-    <h1>Hello, I'm Kiki</h1>
-    <p>Welcome to my little corner of the internet.<br>Dream a little, create a lot, and enjoy the journey.</p>
-    <button id="explore" type="button">Explore More →</button>
-    <p id="message" aria-live="polite"></p>
-  </section></main>
-  <footer>Made with ♥ and a little AI magic</footer>
-  <script>
-    document.getElementById('explore').addEventListener('click', () => {
-      document.getElementById('message').textContent = '🌷 You just made your first website interactive!';
-    });
-    document.getElementById('contact').addEventListener('click', (event) => {
-      event.preventDefault();
-      document.getElementById('message').textContent = '💌 Contact details coming soon!';
-    });
-  </script>
-</body>
-</html>
+<div class="wrap">
+<header class="top"><div><div class="brand">小账本<span> · </span>money diary</div><div class="subtitle">让每一笔钱，都去向清晰的地方。</div></div><span class="pill">🔒 数据仅保存在当前浏览器</span></header>
+<section class="hero"><div><h1>我的财务概览<span style="color:#90a994">.</span></h1><div class="sub">轻松记录收入与支出，慢慢养成储蓄的习惯 🌿</div></div><div><label for="month">查看月份</label><br><input class="select" id="month" type="month"></div></section>
+<section class="stats" aria-label="月度汇总">
+<div class="stat highlight"><div class="label">本月结余</div><div id="balance" class="num">NZ$0.00</div><div class="hint">收入 − 支出</div></div>
+<div class="stat"><div class="label">本月收入 ↗</div><div id="income" class="num">NZ$0.00</div><div class="hint" id="incomeCount">0 笔收入</div></div>
+<div class="stat"><div class="label">本月支出 ↘</div><div id="expense" class="num">NZ$0.00</div><div class="hint" id="expenseCount">0 笔支出</div></div>
+</section>
+<div class="layout">
+<section class="panel"><div class="panelhead"><h2 id="formTitle">✦ 记录一笔新账</h2><span class="muted">货币：NZD</span></div>
+<form id="entryForm">
+<div class="field full" style="margin-bottom:14px"><label>类型</label><div class="typegroup"><button type="button" id="expenseType" class="typebutton active">↘ 支出</button><button type="button" id="incomeType" class="typebutton">↗ 收入</button></div></div>
+<div class="formgrid">
+<div class="field"><label for="amountInput">金额（NZ$）</label><input required id="amountInput" inputmode="decimal" type="number" step="0.01" min="0.01" max="999999999" placeholder="例如 45.80"></div>
+<div class="field"><label for="dateInput">日期</label><input required id="dateInput" type="date"></div>
+<div class="field"><label for="categoryInput">类别</label><select id="categoryInput"></select></div>
+<div class="field"><label for="noteInput">备注</label><input id="noteInput" maxlength="120" placeholder="例如：超市买菜"></div>
+</div>
+<div class="actionline"><button class="primary" id="saveButton" type="submit">＋ 保存记录</button><button type="button" class="soft" id="cancelButton" hidden>取消编辑</button></div>
+</form></section>
+<section class="panel"><div class="panelhead"><h2>支出都花在哪里？</h2><span class="muted">按月分类</span></div><div id="categories"></div><div class="notice">💡 这是你的私人账本。账目只存储在当前设备的浏览器里。清除浏览器数据或换设备可能丢失记录，请定期导出 CSV 备份。</div></section>
+</div>
+<section class="panel records"><div class="panelhead"><h2>最近的交易记录</h2><div class="toolbar"><select id="filterType" aria-label="筛选类型"><option value="all">全部类型</option><option value="income">只看收入</option><option value="expense">只看支出</option></select><button class="soft" id="exportButton" type="button">↓ 导出全部 CSV</button></div></div><div id="recordList"></div><div class="mini"><span class="muted" id="recordCount">0 条记录</span><span class="muted">可编辑或删除每一笔记录</span></div></section>
+<div class="foot">Made with ♥ · Personal Money Diary · 仅供个人记账，不构成专业财务建议</div>
+</div>
+<script>
+(function(){
+"use strict";
+const STORE="kiki_money_diary_v1";
+const categories={expense:["餐饮","超市购物","房租","水电网络","交通加油","车贷","购物","娱乐","旅行","健康","其他支出"],income:["工资","兼职收入","副业收入","退款","礼物","其他收入"]};
+const emoji={"餐饮":"🍜","超市购物":"🛒","房租":"🏠","水电网络":"💡","交通加油":"🚗","车贷":"🚘","购物":"🛍️","娱乐":"🎮","旅行":"✈️","健康":"💊","其他支出":"🧾","工资":"💼","兼职收入":"🌟","副业收入":"💻","退款":"↩️","礼物":"🎁","其他收入":"💰"};
+const $=id=>document.getElementById(id);
+const money=n=>new Intl.NumberFormat("en-NZ",{style:"currency",currency:"NZD"}).format(n);
+const today=()=>{const d=new Date();return [d.getFullYear(),String(d.getMonth()+1).padStart(2,"0"),String(d.getDate()).padStart(2,"0")].join("-")};
+let entries=[];try{const x=JSON.parse(localStorage.getItem(STORE)||"[]");if(Array.isArray(x))entries=x.filter(r=>r&&typeof r.id==="string"&&["income","expense"].includes(r.type)&&Number.isFinite(r.amount)&&r.amount>0&&typeof r.date==="string"&&typeof r.category==="string")}catch(e){alert("读取历史记录失败，请检查浏览器存储。")}
+let type="expense",editing=null;
+$("month").value=today().slice(0,7);$("dateInput").value=today();
+function persist(){try{localStorage.setItem(STORE,JSON.stringify(entries));return true}catch(e){alert("保存失败：浏览器存储不可用或空间不足。请检查隐私设置。");return false}}
+function setType(t){type=t;$("expenseType").classList.toggle("active",t==="expense");$("incomeType").classList.toggle("active",t==="income");const previous=$("categoryInput").value;$("categoryInput").replaceChildren();categories[t].forEach(c=>{const opt=document.createElement("option");opt.value=c;opt.textContent=c;$("categoryInput").append(opt)});if(categories[t].includes(previous))$("categoryInput").value=previous}
+$("expenseType").onclick=()=>setType("expense");$("incomeType").onclick=()=>setType("income");setType("expense");
+function resetForm(){editing=null;$("entryForm").reset();setType("expense");$("dateInput").value=today();$("formTitle").textContent="✦ 记录一笔新账";$("saveButton").textContent="＋ 保存记录";$("cancelButton").hidden=true}
+$("cancelButton").onclick=resetForm;
+$("entryForm").onsubmit=e=>{e.preventDefault();const raw=Number($("amountInput").value);const amount=Math.round((raw+Number.EPSILON)*100)/100;const date=$("dateInput").value;const category=$("categoryInput").value;const note=$("noteInput").value.trim();if(!Number.isFinite(amount)||amount<=0||amount>999999999||!(/^\d{4}-\d{2}-\d{2}$/.test(date))||!categories[type].includes(category)){alert("请检查金额、日期和类别。");return}const previous=entries.slice();if(editing){const r=entries.find(r=>r.id===editing);if(r)Object.assign(r,{type,amount,date,category,note})}else{entries.push({id:Date.now().toString(36)+"-"+Math.random().toString(36).slice(2),type,amount,date,category,note})}if(!persist()){entries=previous;return}$("month").value=date.slice(0,7);resetForm();render()};
+function actionButton(icon,label,fn){const b=document.createElement("button");b.className="iconbtn";b.type="button";b.textContent=icon;b.setAttribute("aria-label",label);b.title=label;b.onclick=fn;return b}
+function edit(id){const r=entries.find(x=>x.id===id);if(!r)return;editing=id;setType(r.type);$("amountInput").value=r.amount;$("dateInput").value=r.date;$("categoryInput").value=r.category;$("noteInput").value=r.note||"";$("formTitle").textContent="✎ 编辑记录";$("saveButton").textContent="保存修改";$("cancelButton").hidden=false;$("entryForm").scrollIntoView({behavior:"smooth",block:"center"})}
+function remove(id){if(!confirm("确定删除这笔记录吗？此操作无法撤销。"))return;const previous=entries.slice();entries=entries.filter(x=>x.id!==id);if(!persist()){entries=previous;return}if(editing===id)resetForm();render()}
+function render(){const month=$("month").value;const rows=entries.filter(r=>r.date.slice(0,7)===month);const inRows=rows.filter(r=>r.type==="income"),outRows=rows.filter(r=>r.type==="expense");const sum=xs=>Math.round(xs.reduce((a,r)=>a+Math.round(r.amount*100),0))/100;const inc=sum(inRows),out=sum(outRows);$("balance").textContent=money(inc-out);$("income").textContent=money(inc);$("expense").textContent=money(out);$("incomeCount").textContent=inRows.length+" 笔收入";$("expenseCount").textContent=outRows.length+" 笔支出";
+const grouped={};outRows.forEach(r=>grouped[r.category]=(grouped[r.category]||0)+r.amount);const list=Object.entries(grouped).sort((a,b)=>b[1]-a[1]);const target=$("categories");target.replaceChildren();if(!list.length){const div=document.createElement("div");div.className="empty";div.textContent="本月还没有支出记录 🌱";target.append(div)}else list.forEach(([cat,value])=>{const row=document.createElement("div");row.className="rowcat";const line=document.createElement("div");line.className="catline";const name=document.createElement("span");name.textContent=(emoji[cat]||"🧾")+" "+cat;const amt=document.createElement("strong");amt.textContent=money(value);line.append(name,amt);const bar=document.createElement("div");bar.className="bar";const fill=document.createElement("div");fill.className="fill";fill.style.width=Math.max(0,Math.min(100,value/out*100))+"%";bar.append(fill);row.append(line,bar);target.append(row)});
+const f=$("filterType").value;const shown=rows.filter(r=>f==="all"||r.type===f).sort((a,b)=>b.date.localeCompare(a.date)||b.id.localeCompare(a.id));const recordList=$("recordList");recordList.replaceChildren();if(!shown.length){const div=document.createElement("div");div.className="empty";div.textContent="还没有记录。添加第一笔，开始你的记账之旅 ✨";recordList.append(div)}else shown.forEach(r=>{const row=document.createElement("div");row.className="record";const ico=document.createElement("div");ico.className="bubble";ico.textContent=emoji[r.category]||"🧾";const main=document.createElement("div");main.className="recmain";const title=document.createElement("div");title.className="recname";title.textContent=r.note||r.category;const sub=document.createElement("div");sub.className="recsub";sub.textContent=r.date+" · "+r.category;main.append(title,sub);const amount=document.createElement("div");amount.className="amount "+r.type;amount.textContent=(r.type==="income"?"+":"−")+money(r.amount);row.append(ico,main,amount,actionButton("✎","编辑",()=>edit(r.id)),actionButton("×","删除",()=>remove(r.id)));recordList.append(row)});$("recordCount").textContent=shown.length+" 条记录"}
+$("month").onchange=render;$("filterType").onchange=render;
+$("exportButton").onclick=()=>{if(!entries.length){alert("暂无可导出的记录。");return}const fields=["日期","类型","类别","金额NZD","备注"];const safe=v=>{let s=String(v??"");if(/^[=+\-@\t\r]/.test(s))s="'"+s;return '"'+s.replace(/"/g,'""')+'"'};const lines=[fields,...entries.slice().sort((a,b)=>a.date.localeCompare(b.date)).map(r=>[r.date,r.type==="income"?"收入":"支出",r.category,r.amount.toFixed(2),r.note||""])];const csv="\uFEFF"+lines.map(line=>line.map(safe).join(",")).join("\r\n");const blob=new Blob([csv],{type:"text/csv;charset=utf-8;"});const url=URL.createObjectURL(blob);const a=document.createElement("a");a.href=url;a.download="我的账本-"+today()+".csv";document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000)};
+render();
+})();
+</script>
+</body></html>
